@@ -87,7 +87,7 @@ export function Portfolio() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span className="text-white text-sm font-medium">Casamento</span>
+              <span className="text-white text-sm font-medium">Casamentos</span>
             </div>
           </div>
           <div className="group relative overflow-hidden rounded-xl cursor-pointer aspect-[4/3]">
@@ -99,7 +99,7 @@ export function Portfolio() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span className="text-white text-sm font-medium">Noivas</span>
+              <span className="text-white text-sm font-medium">Eventos</span>
             </div>
           </div>
           <div className="hidden md:flex items-center justify-center bg-zinc-900 rounded-xl aspect-[4/3] border border-zinc-800">

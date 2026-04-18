@@ -16,8 +16,17 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log(formData)
+
+    const message = `Olá! Meu nome é ${formData.name} vi seu site e gostaria de conversar sobre um projeto.
+${formData.message}
+
+*Email:* ${formData.email}
+*Telefone:* ${formData.phone}`
+
+    const encodedMessage = encodeURIComponent(message)
+    const whatsappNumber = "5553984741363"
+
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, "_blank")
   }
 
   return (
@@ -70,7 +79,7 @@ export function Contact() {
               </a>
 
               <a
-                href="tel:+5500000000000"
+                href="tel:+5553984741363"
                 className="flex items-center gap-4 text-white hover:text-accent transition-colors"
               >
                 <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
@@ -78,7 +87,7 @@ export function Contact() {
                 </div>
                 <div>
                   <p className="font-medium">Telefone</p>
-                  <p className="text-sm text-zinc-400">WhatsApp disponível</p>
+                  <p className="text-sm text-zinc-400">(53)98474-1363</p>
                 </div>
               </a>
 
@@ -110,6 +119,7 @@ export function Contact() {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="bg-black border-zinc-800 text-white placeholder:text-zinc-500"
+                  required
                 />
               </div>
 
@@ -151,6 +161,7 @@ export function Contact() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="bg-black border-zinc-800 text-white placeholder:text-zinc-500 resize-none"
+                  required
                 />
               </div>
 

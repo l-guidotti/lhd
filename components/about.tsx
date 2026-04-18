@@ -1,8 +1,8 @@
 import Image from "next/image"
 
 const stats = [
-  { value: "5+", label: "Anos de Experiência" },
-  { value: "200+", label: "Projetos Realizados" },
+  { value: "3+", label: "Anos de Experiência" },
+  // { value: "200+", label: "Projetos Realizados" },
   { value: "150+", label: "Clientes Satisfeitos" },
 ]
 
@@ -13,9 +13,9 @@ export function About() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image */}
           <div className="relative">
-            <div className="aspect-[4/5] rounded-[2rem] overflow-hidden bg-zinc-900">
+            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-zinc-900">
               <Image
-                src="/images/lhd.webp"
+                src="/images/perfil2.png"
                 alt="LHD Audiovisual"
                 fill
                 className="object-cover"
@@ -38,7 +38,7 @@ export function About() {
           <div className="flex flex-col gap-8">
             <div>
               <span className="text-accent font-medium text-sm uppercase tracking-wider">
-                Sobre Nós
+                Sobre mim
               </span>
               <h2 className="font-serif text-4xl md:text-5xl font-medium text-white mt-4">
                 Transformando momentos em arte visual
@@ -63,14 +63,14 @@ export function About() {
             </div>
 
             {/* Stats Row */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-zinc-800">
+            {/* <div className="grid grid-cols-3 gap-6 pt-8 border-t border-zinc-800">
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <p className="font-serif text-3xl font-semibold text-white">{stat.value}</p>
                   <p className="text-sm text-zinc-400 mt-1">{stat.label}</p>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
