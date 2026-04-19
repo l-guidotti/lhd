@@ -104,7 +104,7 @@ ${formData.message}
           </div>
 
           {/* Contact Form */}
-          <div className="bg-zinc-900 p-8 rounded-2xl border border-zinc-800">
+          <div id="contact-form" className="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 scroll-mt-24">
             <h3 className="font-serif text-2xl font-medium text-white mb-6">
               Envie sua mensagem
             </h3>

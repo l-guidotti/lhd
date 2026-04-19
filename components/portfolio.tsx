@@ -62,13 +62,6 @@ export function Portfolio() {
           <h2 className="font-serif text-4xl md:text-5xl font-medium text-white">
             Trabalhos Recentes
           </h2>
-          <Link
-            href="#portfolio"
-            className="group inline-flex items-center gap-2 text-white font-medium hover:text-zinc-300 transition-colors hidden md:flex"
-          >
-            Ver Todos
-            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
         </div>
 
         {/* Filters */}
@@ -77,11 +70,10 @@ export function Portfolio() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === category
+              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === category
                   ? "bg-white text-black"
                   : "bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-white"
-              }`}
+                }`}
             >
               {category}
             </button>
@@ -99,11 +91,10 @@ export function Portfolio() {
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3 }}
                 key={item.id}
-                className={`group relative overflow-hidden rounded-xl cursor-pointer ${
-                  index === 0 && activeCategory === "Todos"
+                className={`group relative overflow-hidden rounded-xl cursor-pointer ${index === 0 && activeCategory === "Todos"
                     ? "row-span-2 aspect-[3/4]"
                     : "aspect-[4/5]"
-                }`}
+                  }`}
               >
                 <Image
                   src={item.src}
@@ -123,7 +114,7 @@ export function Portfolio() {
                 </div>
               </motion.div>
             ))}
-            
+
             {/* Fallback msg for empty categories (videos) */}
             {filteredItems.length === 0 && (
               <motion.div

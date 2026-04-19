@@ -38,7 +38,7 @@ export function Hero() {
             {/* CTA Button */}
             <div className="flex items-center gap-6">
               <Link
-                href="#contact"
+                href="#contact-form"
                 className="group inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground rounded-full w-32 h-32 text-sm font-medium hover:bg-primary/90 transition-all hover:scale-105"
               >
                 <span className="font-serif text-lg">Orçamento</span>

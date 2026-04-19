@@ -96,7 +96,7 @@ export function Pricing() {
                 ))}
               </ul>
               <a
-                href="#contact"
+                href="#contact-form"
                 className={`text-center py-3 px-6 rounded-full font-medium transition-colors ${plan.popular
                     ? "bg-accent text-white hover:bg-accent/90"
                     : "bg-white/10 text-white hover:bg-white/20"
