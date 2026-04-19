@@ -22,7 +22,7 @@ export function About() {
               />
             </div>
             {/* Stats Card */}
-            <div className="absolute -bottom-8 -right-8 bg-zinc-900 p-6 rounded-2xl shadow-lg border border-zinc-800">
+            <div className="absolute -bottom-6 right-4 sm:-bottom-8 sm:-right-8 bg-zinc-900 p-6 rounded-2xl shadow-lg border border-zinc-800">
               <div className="flex gap-8">
                 {stats.slice(0, 2).map((stat) => (
                   <div key={stat.label} className="text-center">
