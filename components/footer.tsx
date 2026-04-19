@@ -3,9 +3,9 @@ import { Instagram } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="py-12 bg-primary text-primary-foreground">
+    <footer className="py-6 bg-primary text-primary-foreground">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Logo */}
           <Link href="/" className="font-serif text-2xl font-semibold tracking-wide">
             LHD Audiovisual

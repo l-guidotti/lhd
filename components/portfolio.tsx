@@ -109,6 +109,7 @@ export function Portfolio() {
                   src={item.src}
                   alt={item.alt}
                   fill
+                  priority={index === 0}
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 {/* Overlay */}
