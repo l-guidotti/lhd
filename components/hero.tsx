@@ -41,7 +41,7 @@ export function Hero() {
                 href="#contact"
                 className="group inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground rounded-full w-32 h-32 text-sm font-medium hover:bg-primary/90 transition-all hover:scale-105"
               >
-                <span className="font-serif">Agendar</span>
+                <span className="font-serif text-lg">Orçamento</span>
                 <ArrowUpRight className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
             </div>

@@ -96,7 +96,7 @@ ${formData.message}
                   <MapPin className="h-5 w-5 text-accent" />
                 </div>
                 <div>
-                  <p className="font-medium">Localizacao</p>
+                  <p className="font-medium">Localização</p>
                   <p className="text-sm text-zinc-400">Atendemos em todo o Brasil</p>
                 </div>
               </div>

@@ -13,7 +13,7 @@ export function Footer() {
 
           {/* Copyright */}
           <p className="text-primary-foreground/70 text-sm">
-            2024 LHD Audiovisual. Todos os direitos reservados.
+            2026 <Link href="https://visualink.com.br" target="_blank" rel="noopener noreferrer">VisuaLink</Link>. Todos os direitos reservados.
           </p>
 
           {/* Social Links */}

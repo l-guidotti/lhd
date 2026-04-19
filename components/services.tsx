@@ -1,4 +1,4 @@
-import { Camera, Film, Heart, Building2 } from "lucide-react"
+import { Camera, Film, Heart, Building2, Ticket } from "lucide-react"
 
 const services = [
   {
@@ -7,13 +7,13 @@ const services = [
     description: "Capturamos cada detalhe do seu dia especial com elegância e emoção, criando memórias que durarão para sempre.",
   },
   {
-    icon: Camera,
-    title: "Ensaios",
-    description: "Sessões fotográficas personalizadas que revelam sua essência e contam sua história de forma única.",
+    icon: Ticket,
+    title: "Eventos",
+    description: "Registramos cada momento com sensibilidade e atenção aos detalhes, capturando a energia, as emoções e a atmosfera única do seu evento — seja ele social, cultural ou corporativo. Transformamos instantes em lembranças vivas que contam a história do seu dia do começo ao fim.",
   },
   {
     icon: Film,
-    title: "Video",
+    title: "Vídeos",
     description: "Produção audiovisual cinematográfica que transforma momentos em narrativas visuais emocionantes.",
   },
   {
@@ -36,7 +36,7 @@ export function Services() {
             O que oferecemos
           </h2>
           <p className="text-zinc-400 mt-4">
-            Serviços completos de fotografia e vídeo para eternizar seus momentos mais importantes.
+            Serviços completos de vídeo e fotografia para eternizar seus momentos mais importantes.
           </p>
         </div>
 
