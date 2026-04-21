@@ -15,7 +15,7 @@ export function About() {
           <div className="relative">
             <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-zinc-900">
               <Image
-                src="/images/perfil2.PNG"
+                src="/images/lhd.webp"
                 alt="LHD Audiovisual"
                 fill
                 className="object-cover"
