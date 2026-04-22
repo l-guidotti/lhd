@@ -8,13 +8,15 @@ import { motion, AnimatePresence } from "framer-motion"
 
 const categories = ["Todos", "Casamentos", "Ensaios", "Corporativo", "Eventos", "Outros"]
 
-const portfolioItems = [
-  {
-    id: 1,
-    src: "/images/lhd1.jpeg",
-    alt: "Fotografia",
-    category: "Ensaios",
-  },
+type PortfolioItem = {
+  id: number
+  vimeoId?: string
+  src?: string
+  alt: string
+  category: string
+}
+
+const portfolioItems: PortfolioItem[] = [
   {
     id: 5,
     vimeoId: "1185174901",
@@ -130,7 +132,7 @@ export function Portfolio() {
   }
 
   return (
-    <section id="portfolio" className="py-24 bg-black">
+    <section id="portfolio" className="py-12 md:py-24 bg-[#1F030A]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
@@ -156,7 +158,7 @@ export function Portfolio() {
         </div>
 
         {/* Portfolio Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           <AnimatePresence>
             {filteredItems.map((item, index) => (
               <motion.div
@@ -172,20 +174,30 @@ export function Portfolio() {
                     setVimeoPlaying(false)
                   }
                 }}
-                className={`group relative overflow-hidden rounded-xl cursor-pointer ${index === 0 && activeCategory === "Todos"
-                  ? "row-span-2 aspect-[3/4]"
-                  : "aspect-[4/5]"
-                  }`}
+                className="group relative overflow-hidden rounded-xl cursor-pointer aspect-[4/5]"
               >
                 <>
-                  <Image
-                    src={item.vimeoId ? `https://vumbnail.com/${item.vimeoId}.jpg` : item.src!}
-                    alt={item.alt}
-                    fill
-                    priority={index === 0}
-                    unoptimized={!!item.vimeoId}
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+                  {item.vimeoId ? (
+                    <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden bg-zinc-900 group-hover:scale-110 transition-transform duration-500">
+                      <iframe
+                        src={`https://player.vimeo.com/video/${item.vimeoId}?background=1&autoplay=1&loop=1&muted=1`}
+                        allow="autoplay; fullscreen; picture-in-picture"
+                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                        style={{
+                          width: '300%',
+                          height: '300%'
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <Image
+                      src={item.src!}
+                      alt={item.alt}
+                      fill
+                      priority={index === 0}
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  )}
 
                   {/* Play Button Overlay se for Vídeo */}
                   {item.vimeoId && (
@@ -280,7 +292,7 @@ export function Portfolio() {
                 {selectedItem.vimeoId ? (
                   <div className="absolute inset-0 w-full h-full group/video">
                     <iframe
-                      src={`https://player.vimeo.com/video/${selectedItem.vimeoId}?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479`}
+                      src={`https://player.vimeo.com/video/${selectedItem.vimeoId}?autoplay=1&title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479`}
                       title={selectedItem.alt}
                       allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                       referrerPolicy="strict-origin-when-cross-origin"

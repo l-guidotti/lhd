@@ -8,7 +8,7 @@ const stats = [
 
 export function About() {
   return (
-    <section id="about" className="py-24 bg-black">
+    <section id="about" className="py-12 md:py-24 bg-gradient-to-b from-accent/15 via-black to-black">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image */}

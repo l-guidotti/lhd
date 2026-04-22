@@ -30,7 +30,7 @@ ${formData.message}
   }
 
   return (
-    <section id="contact" className="py-24 bg-black">
+    <section id="contact" className="py-12 md:py-24 bg-gradient-to-b from-black via-black to-accent/20 relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Left Content */}
@@ -74,7 +74,7 @@ ${formData.message}
                 </div>
                 <div>
                   <p className="font-medium">Email</p>
-                  <p className="text-sm text-zinc-400">contato@lhdaudiovisual.com</p>
+                  <p className="text-sm text-zinc-400">lhdfoto@gmail.com</p>
                 </div>
               </a>
 
