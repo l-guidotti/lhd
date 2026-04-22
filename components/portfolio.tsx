@@ -6,7 +6,7 @@ import Link from "next/link"
 import { ArrowRight, Play, Pause, X } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const categories = ["Todos", "Casamentos", "Ensaios", "Vídeos", "Corporativo", "Eventos", "Outros"]
+const categories = ["Todos", "Casamentos", "Ensaios", "Corporativo", "Eventos", "Outros"]
 
 const portfolioItems = [
   {
@@ -147,7 +147,7 @@ export function Portfolio() {
                 onClick={() => {
                   setSelectedItem(item)
                   if (item.vimeoId) {
-                    setVimeoPlaying(true)
+                    setVimeoPlaying(false)
                   }
                 }}
                 className={`group relative overflow-hidden rounded-xl cursor-pointer ${index === 0 && activeCategory === "Todos"
@@ -231,7 +231,7 @@ export function Portfolio() {
               >
                 <X className="w-8 h-8" />
               </button>
-              
+
               <motion.div
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -243,7 +243,7 @@ export function Portfolio() {
                   <div className="absolute inset-0 w-full h-full group/video cursor-pointer" onClick={toggleVimeoPlayPause}>
                     <iframe
                       ref={vimeoIframeRef}
-                      src={`https://player.vimeo.com/video/${selectedItem.vimeoId}?autoplay=1&title=0&byline=0&portrait=0&controls=0&badge=0&autopause=0&player_id=0&app_id=58479&api=1`}
+                      src={`https://player.vimeo.com/video/${selectedItem.vimeoId}?autoplay=0&title=0&byline=0&portrait=0&controls=0&badge=0&autopause=0&player_id=0&app_id=58479&api=1`}
                       title={selectedItem.alt}
                       allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                       referrerPolicy="strict-origin-when-cross-origin"

@@ -48,7 +48,7 @@ export function Header() {
             </Link>
           ))}
           <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
-            <Link href="#contact">Contato</Link>
+            <Link href="#contact-form">Contato</Link>
           </Button>
         </div>
 
