@@ -3,7 +3,7 @@
 import { useState, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Play, Pause, X } from "lucide-react"
+import { ArrowRight, Play, Pause, X, ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
 const categories = ["Todos", "Casamentos", "Ensaios", "Corporativo", "Eventos", "Outros"]
@@ -106,6 +106,28 @@ export function Portfolio() {
   const filteredItems = portfolioItems.filter(
     (item) => activeCategory === "Todos" || item.category === activeCategory
   )
+
+  const handlePrevious = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (!selectedItem) return
+    const currentIndex = filteredItems.findIndex(item => item.id === selectedItem.id)
+    if (currentIndex > 0) {
+      setSelectedItem(filteredItems[currentIndex - 1])
+    } else {
+      setSelectedItem(filteredItems[filteredItems.length - 1])
+    }
+  }
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (!selectedItem) return
+    const currentIndex = filteredItems.findIndex(item => item.id === selectedItem.id)
+    if (currentIndex < filteredItems.length - 1) {
+      setSelectedItem(filteredItems[currentIndex + 1])
+    } else {
+      setSelectedItem(filteredItems[0])
+    }
+  }
 
   return (
     <section id="portfolio" className="py-24 bg-black">
@@ -227,9 +249,25 @@ export function Portfolio() {
               <button
                 onClick={() => setSelectedItem(null)}
                 className="absolute top-6 right-6 text-white hover:text-zinc-300 z-50 p-2 bg-black/20 rounded-full transition-colors"
-                aria-label="Cerrar"
+                aria-label="Fechar"
               >
                 <X className="w-8 h-8" />
+              </button>
+
+              <button
+                onClick={handlePrevious}
+                className="absolute left-4 md:left-12 text-white hover:text-zinc-300 z-50 p-2 bg-black/20 hover:bg-black/40 rounded-full transition-all"
+                aria-label="Anterior"
+              >
+                <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
+              </button>
+
+              <button
+                onClick={handleNext}
+                className="absolute right-4 md:right-12 text-white hover:text-zinc-300 z-50 p-2 bg-black/20 hover:bg-black/40 rounded-full transition-all"
+                aria-label="Próximo"
+              >
+                <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
               </button>
 
               <motion.div
@@ -240,27 +278,14 @@ export function Portfolio() {
                 className="relative w-full max-w-5xl md:h-[80vh] h-[60vh] rounded-2xl overflow-hidden bg-black flex items-center justify-center shadow-2xl"
               >
                 {selectedItem.vimeoId ? (
-                  <div className="absolute inset-0 w-full h-full group/video cursor-pointer" onClick={toggleVimeoPlayPause}>
+                  <div className="absolute inset-0 w-full h-full group/video">
                     <iframe
-                      ref={vimeoIframeRef}
-                      src={`https://player.vimeo.com/video/${selectedItem.vimeoId}?autoplay=0&title=0&byline=0&portrait=0&controls=0&badge=0&autopause=0&player_id=0&app_id=58479&api=1`}
+                      src={`https://player.vimeo.com/video/${selectedItem.vimeoId}?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479`}
                       title={selectedItem.alt}
                       allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                       referrerPolicy="strict-origin-when-cross-origin"
-                      className="absolute inset-0 w-full h-full border-0 bg-black pointer-events-none"
+                      className="absolute inset-0 w-full h-full border-0 bg-black"
                     />
-
-                    <div
-                      className={`absolute inset-0 z-20 flex items-center justify-center transition-all duration-300 ${vimeoPlaying ? 'opacity-0 group-hover/video:opacity-100 bg-black/20' : 'opacity-100 bg-black/50'}`}
-                    >
-                      <div className="w-16 h-16 md:w-20 md:h-20 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 text-white hover:scale-110 hover:bg-white hover:text-black transition-all duration-300 shadow-xl">
-                        {vimeoPlaying ? (
-                          <Pause className="w-6 h-6 md:w-8 md:h-8 fill-current" />
-                        ) : (
-                          <Play className="w-6 h-6 md:w-8 md:h-8 ml-1 fill-current" />
-                        )}
-                      </div>
-                    </div>
                   </div>
                 ) : (
                   <Image
