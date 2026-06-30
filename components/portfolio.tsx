@@ -19,6 +19,13 @@ type PortfolioItem = {
 
 const portfolioItems: PortfolioItem[] = [
   {
+    id: 13,
+    vimeoId: "1205660459",
+    src: "https://i.vimeocdn.com/video/2174304283-5c1c51f421eb496a889c62800ce8272af8fdd8652372134a42f40caf7a102292-d_295x166?region=us",
+    alt: "SICREDI",
+    category: "Corporativo",
+  },
+  {
     id: 5,
     vimeoId: "1185174901",
     src: "https://i.vimeocdn.com/video/2148520799-2b1ba7577f0bb85bcd5e8478666b23e9d6beacd966f3c117c662ee4668558aac-d_640?region=us",
@@ -94,7 +101,7 @@ const portfolioItems: PortfolioItem[] = [
     src: "https://i.vimeocdn.com/video/2148733945-07b324dcebc07ca85d60a223af09bc9349ffb30499756357c729bfde31766b4d-d_640?region=us",
     alt: "AIKO E EVELLIN",
     category: "Casamentos",
-  },
+  }
 ]
 
 function PortfolioCard({
