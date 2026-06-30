@@ -66,7 +66,7 @@ ${formData.message}
               </a>
 
               <a
-                href="mailto:contato@lhdaudiovisual.com"
+                href="mailto:lhdfoto@gmail.com"
                 className="flex items-center gap-4 text-white hover:text-accent transition-colors"
               >
                 <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
