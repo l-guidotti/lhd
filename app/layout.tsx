@@ -16,8 +16,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'LHD Audiovisual | Fotografia e Video',
-  description: 'Capturando momentos unicos e transformando-os em memorias eternas. Fotografia e video profissional.',
+  title: 'LHD Audiovisual | Fotografia e Vídeo',
+  description: 'Capturando momentos únicos e transformando-os em memórias eternas. Fotografia e vídeo profissional.',
   icons: {
     icon: [
       {
