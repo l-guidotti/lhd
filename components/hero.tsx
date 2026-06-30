@@ -59,7 +59,7 @@ export function Hero() {
           <div className="relative">
             <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden bg-zinc-900">
               <Image
-                src="/images/perfil2.PNG"
+                src="/images/perfil3.jpeg"
                 alt="LHD Audiovisual - Fotografo profissional"
                 fill
                 className="object-cover"

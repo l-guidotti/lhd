@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { WhatsAppButton } from '@/components/whatsapp-button'
 import './globals.css'
 
 const cormorant = Cormorant_Garamond({
@@ -45,6 +46,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${inter.variable} ${cormorant.variable} font-sans antialiased overflow-x-hidden`}>
         {children}
+        <WhatsAppButton />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

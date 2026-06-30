@@ -1,12 +1,13 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, Play, Pause, X, ChevronLeft, ChevronRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useIsMobile } from "@/hooks/use-mobile"
 
-const categories = ["Todos", "Casamentos", "Ensaios", "Corporativo", "Eventos", "Outros"]
+const categories = ["Todos", "Casamentos", "Corporativo", "Eventos", "Outros"]
 
 type PortfolioItem = {
   id: number
@@ -20,70 +21,169 @@ const portfolioItems: PortfolioItem[] = [
   {
     id: 5,
     vimeoId: "1185174901",
+    src: "https://i.vimeocdn.com/video/2148520799-2b1ba7577f0bb85bcd5e8478666b23e9d6beacd966f3c117c662ee4668558aac-d_640?region=us",
     alt: "PEDRO 1 ANO - FINAL",
     category: "Outros",
   },
   {
     id: 15,
     vimeoId: "1185185249",
+    src: "https://i.vimeocdn.com/video/2148534629-c54c1fa75f7e3f69171a0b00853b1c03142bb3674a50a418bcf5ec65b7027714-d_640?region=us",
     alt: "ALBERTO PESKE",
     category: "Eventos",
   },
   {
     id: 4,
     vimeoId: "1185174978",
+    src: "https://i.vimeocdn.com/video/2148520906-df3f9c704cb3e4e78317f2761ffe72da83eb0ce434c07d3660fd92a541e5727f-d_640?region=us",
     alt: "PEDRO 1 ANO",
     category: "Outros",
   },
   {
     id: 3,
     vimeoId: "1185179543",
+    src: "https://i.vimeocdn.com/video/2148526959-e6dc12b4e85dad160d384a487426e7bcdbd036b94ca129159756caee2f73fe84-d_640?region=us",
     alt: "IMERSÃO",
     category: "Eventos",
   },
   {
     id: 6,
     vimeoId: "1185179594",
+    src: "https://i.vimeocdn.com/video/2148527906-c47966ac61021023dc8e3e1b0248d13e6537195d2b3c9e37841eb2ab452e4eaa-d_640?region=us",
     alt: "OPEN HOUSE",
     category: "Eventos",
   },
   {
     id: 7,
     vimeoId: "1185174810",
+    src: "https://i.vimeocdn.com/video/2148520711-ec23d4a41c712fa5a220d9eaf07aa0bce5aec22715a880613aa81c173052b3e3-d_640?region=us",
     alt: "ZABALETA TRANSFORMA",
     category: "Outros",
   },
   {
     id: 8,
     vimeoId: "1185179698",
+    src: "https://i.vimeocdn.com/video/2148527126-e6d761eac8e224a8ffaa93a8d5060c37f1b26ec8e1ffa3f2de6bba884b27b381-d_640?region=us",
     alt: "WANDEC_AJUST.",
     category: "Eventos",
   },
   {
     id: 9,
     vimeoId: "1185179643",
+    src: "https://i.vimeocdn.com/video/2148527070-09ec49c2255a1b7b5cc363c8f4018d501c88fad0b2ed8bb595b5f8d4dec826e7-d_640?region=us",
     alt: "VIDEO 2 BENTO mp4",
     category: "Eventos",
   },
   {
     id: 10,
     vimeoId: "1185185179",
+    src: "https://i.vimeocdn.com/video/2148534544-56bffd9a1c44ec1e1441d9fdef6cee525f36904824cecbaed33eb72b83feefeb-d_640?region=us",
     alt: "FORMATURA PEDRO",
     category: "Eventos",
   },
   {
     id: 11,
     vimeoId: "1185336190",
+    src: "https://i.vimeocdn.com/video/2148733875-18491533a4a5b24c02b2fbe1a3850ed1a4b46b28980f967164239854bc7433b7-d_640?region=us",
     alt: "TEASER AIKO E EVELLIN",
     category: "Casamentos",
   },
   {
     id: 12,
     vimeoId: "1185336242",
+    src: "https://i.vimeocdn.com/video/2148733945-07b324dcebc07ca85d60a223af09bc9349ffb30499756357c729bfde31766b4d-d_640?region=us",
     alt: "AIKO E EVELLIN",
     category: "Casamentos",
   },
 ]
+
+function PortfolioCard({
+  item,
+  index
+}: {
+  item: PortfolioItem
+  index: number
+}) {
+  const isMobile = useIsMobile()
+  const [isInView, setIsInView] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (isMobile) {
+      setIsInView(false)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting)
+      },
+      {
+        rootMargin: "200px",
+        threshold: 0.01,
+      }
+    )
+
+    const currentRef = containerRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef)
+      }
+    }
+  }, [isMobile])
+
+  return (
+    <div ref={containerRef} className="w-full h-full relative">
+      {item.vimeoId && isInView && !isMobile ? (
+        <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden bg-zinc-900 group-hover:scale-110 transition-transform duration-500">
+          <iframe
+            src={`https://player.vimeo.com/video/${item.vimeoId}?background=1&autoplay=1&loop=1&muted=1`}
+            allow="autoplay; fullscreen; picture-in-picture"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            style={{
+              width: '300%',
+              height: '300%'
+            }}
+          />
+        </div>
+      ) : item.src ? (
+        <Image
+          src={item.src}
+          alt={item.alt}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
+          priority={index === 0}
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+      ) : (
+        <div className="absolute inset-0 bg-zinc-900" />
+      )}
+
+      {/* Play Button Overlay se for Vídeo */}
+      {item.vimeoId && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition-colors duration-300">
+          <div className="w-16 h-16 md:w-20 md:h-20 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 text-white group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-300 shadow-xl">
+            <Play className="w-6 h-6 md:w-8 md:h-8 ml-1 fill-current" />
+          </div>
+        </div>
+      )}
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+      {/* Category Label */}
+      <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <span className="text-white text-sm font-medium">
+          {item.category}
+        </span>
+      </div>
+    </div>
+  )
+}
 
 export function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("Todos")
@@ -176,48 +276,7 @@ export function Portfolio() {
                 }}
                 className="group relative overflow-hidden rounded-xl cursor-pointer aspect-[4/5]"
               >
-                <>
-                  {item.vimeoId ? (
-                    <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden bg-zinc-900 group-hover:scale-110 transition-transform duration-500">
-                      <iframe
-                        src={`https://player.vimeo.com/video/${item.vimeoId}?background=1&autoplay=1&loop=1&muted=1`}
-                        allow="autoplay; fullscreen; picture-in-picture"
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                        style={{
-                          width: '300%',
-                          height: '300%'
-                        }}
-                      />
-                    </div>
-                  ) : (
-                    <Image
-                      src={item.src!}
-                      alt={item.alt}
-                      fill
-                      priority={index === 0}
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  )}
-
-                  {/* Play Button Overlay se for Vídeo */}
-                  {item.vimeoId && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition-colors duration-300">
-                      <div className="w-16 h-16 md:w-20 md:h-20 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20 text-white group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-300 shadow-xl">
-                        <Play className="w-6 h-6 md:w-8 md:h-8 ml-1 fill-current" />
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-
-                  {/* Category Label */}
-                  <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <span className="text-white text-sm font-medium">
-                      {item.category}
-                    </span>
-                  </div>
-                </>
+                <PortfolioCard item={item} index={index} />
               </motion.div>
             ))}
 
